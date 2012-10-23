@@ -11,60 +11,59 @@ BuildRequires: pcre-ocaml ocaml libmad taglib libvorbis flac
 %prep
 %setup -q -n liquidsoap-1.0.1-full
 cp PACKAGES.minimal PACKAGES
-./configure --disable-camomile --prefix=%{buildroot}/usr/local
+./configure --disable-camomile
 make
 
 %install
-make install 
-find %{buildroot} -type f -exec sed -i s#%{buildroot}##g {} \;
+make install DESTDIR=%{buildroot} OCAMLFIND_DESTDIR=%{buildroot} prefix=%{buildroot}
 
 %files
-/usr/local/etc/logrotate.d/liquidsoap
-/usr/local/etc/liquidsoap/radio.liq.example
-/usr/local/bin/liquidsoap
-/usr/local/bin/liguidsoap
-/usr/local/share/man/man1/liguidsoap.1
-/usr/local/share/man/man1/liquidsoap.1
-/usr/local/share/doc/liquidsoap-1.0.1/examples/README
-/usr/local/share/doc/liquidsoap-1.0.1/examples/transitions.liq
-/usr/local/share/doc/liquidsoap-1.0.1/examples/radio.liq
-/usr/local/share/doc/liquidsoap-1.0.1/examples/geek.liq
-/usr/local/share/doc/liquidsoap-1.0.1/examples/fallible.liq
-/usr/local/lib/python2.6/site-packages/liquidsoap/widgets.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/editable.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/mix.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/liguidsoap.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/queue.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/mix.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/playlist.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/widgets.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/playlist.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/output.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/client.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/client.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/output.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/playlist.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/queue.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/widgets.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/client.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/mix.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/output.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/editable.py
-/usr/local/lib/python2.6/site-packages/liquidsoap/liguidsoap.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/editable.pyo
-/usr/local/lib/python2.6/site-packages/liquidsoap/liguidsoap.pyc
-/usr/local/lib/python2.6/site-packages/liquidsoap/queue.py
-/usr/local/lib/liquidsoap/1.0.1/lastfm.liq
-/usr/local/lib/liquidsoap/1.0.1/extract-replaygain
-/usr/local/lib/liquidsoap/1.0.1/http_codes.liq
-/usr/local/lib/liquidsoap/1.0.1/video_text.liq
-/usr/local/lib/liquidsoap/1.0.1/http.liq
-/usr/local/lib/liquidsoap/1.0.1/flows.liq
-/usr/local/lib/liquidsoap/1.0.1/liquidtts
-/usr/local/lib/liquidsoap/1.0.1/utils.liq
-/usr/local/lib/liquidsoap/1.0.1/externals.liq
-/usr/local/lib/liquidsoap/1.0.1/shoutcast.liq
-/usr/local/lib/liquidsoap/1.0.1/pervasives.liq
+/etc/logrotate.d/liquidsoap
+/etc/liquidsoap/radio.liq.example
+/bin/liquidsoap
+/bin/liguidsoap
+/share/man/man1/liguidsoap.1
+/share/man/man1/liquidsoap.1
+/share/doc/liquidsoap-1.0.1/examples/README
+/share/doc/liquidsoap-1.0.1/examples/transitions.liq
+/share/doc/liquidsoap-1.0.1/examples/radio.liq
+/share/doc/liquidsoap-1.0.1/examples/geek.liq
+/share/doc/liquidsoap-1.0.1/examples/fallible.liq
+/lib/python2.6/site-packages/liquidsoap/widgets.pyo
+/lib/python2.6/site-packages/liquidsoap/editable.pyc
+/lib/python2.6/site-packages/liquidsoap/mix.pyc
+/lib/python2.6/site-packages/liquidsoap/liguidsoap.py
+/lib/python2.6/site-packages/liquidsoap/queue.pyo
+/lib/python2.6/site-packages/liquidsoap/mix.pyo
+/lib/python2.6/site-packages/liquidsoap/playlist.pyc
+/lib/python2.6/site-packages/liquidsoap/widgets.pyc
+/lib/python2.6/site-packages/liquidsoap/playlist.pyo
+/lib/python2.6/site-packages/liquidsoap/output.py
+/lib/python2.6/site-packages/liquidsoap/client.pyo
+/lib/python2.6/site-packages/liquidsoap/client.py
+/lib/python2.6/site-packages/liquidsoap/output.pyo
+/lib/python2.6/site-packages/liquidsoap/playlist.py
+/lib/python2.6/site-packages/liquidsoap/queue.pyc
+/lib/python2.6/site-packages/liquidsoap/widgets.py
+/lib/python2.6/site-packages/liquidsoap/client.pyc
+/lib/python2.6/site-packages/liquidsoap/mix.py
+/lib/python2.6/site-packages/liquidsoap/output.pyc
+/lib/python2.6/site-packages/liquidsoap/editable.py
+/lib/python2.6/site-packages/liquidsoap/liguidsoap.pyo
+/lib/python2.6/site-packages/liquidsoap/editable.pyo
+/lib/python2.6/site-packages/liquidsoap/liguidsoap.pyc
+/lib/python2.6/site-packages/liquidsoap/queue.py
+/lib/liquidsoap/1.0.1/lastfm.liq
+/lib/liquidsoap/1.0.1/extract-replaygain
+/lib/liquidsoap/1.0.1/http_codes.liq
+/lib/liquidsoap/1.0.1/video_text.liq
+/lib/liquidsoap/1.0.1/http.liq
+/lib/liquidsoap/1.0.1/flows.liq
+/lib/liquidsoap/1.0.1/liquidtts
+/lib/liquidsoap/1.0.1/utils.liq
+/lib/liquidsoap/1.0.1/externals.liq
+/lib/liquidsoap/1.0.1/shoutcast.liq
+/lib/liquidsoap/1.0.1/pervasives.liq
 
 %description
 Liquidsoap is a powerful and flexible language for describing your streams. It offers a rich collection of operators that you can combine at will, giving you more power than you need for creating or transforming streams. But liquidsoap is still very light and easy to use, in the Unix tradition of simple strong components working together.
